@@ -34,6 +34,8 @@ export const run = async (): Promise<void> => {
 
     const newReleaseName = getInput('release_name', {required: false})
     const newBody = getInput('body', {required: false})
+    const stringToFind = getInput('string_to_find', {required: false})
+    const stringToReplace = getInput('string_to_replace', {required: false})
     const newDraft = getInput('draft', {required: false})
     const newPrerelease = getInput('prerelease', {required: false})
     const isAppendBody =
@@ -53,7 +55,9 @@ export const run = async (): Promise<void> => {
       }
     }
     let body
-    if (newBody === '') {
+    if (stringToFind && stringToReplace) {
+      body = `${oldBody.replace(stringToFind, stringToReplace)}`
+    } else if (newBody === '') {
       body = oldBody
     } else if (isAppendBody) {
       body = `${oldBody}\n${newBody}`

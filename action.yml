@@ -8,6 +8,12 @@ inputs:
   body:
     description: 'new body text, if not, take over before text'
     required: false
+  string_to_find:
+    description: 'string to replace to find'
+    required: false
+  string_to_replace:
+    description: 'string to replace to find'
+    required: false
   draft:
     description: 'new draft, if not, take over before draft'
     required: false
